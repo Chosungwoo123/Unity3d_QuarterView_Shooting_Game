@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private Camera camera;
+
+    [SerializeField] private LayerMask whatIsGround;
     
     private Rigidbody rigid;
     private Vector3 lookPos;
@@ -57,7 +59,7 @@ public class Player : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 100, whatIsGround))
         {
             lookPos = hit.point;
         }

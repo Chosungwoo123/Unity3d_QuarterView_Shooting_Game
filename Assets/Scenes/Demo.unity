@@ -12766,7 +12766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673863225554180, guid: 079dc7324bc7318429080ce63b769236, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4812297272306590, guid: 079dc7324bc7318429080ce63b769236, type: 3}
       propertyPath: m_RootOrder
@@ -17960,7 +17960,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 322083109}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &439410472
 MeshRenderer:
@@ -29560,6 +29560,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 465623191}
     m_Modifications:
+    - target: {fileID: 1420342771738900, guid: 5c6d758d37ba80347ba0f4683cb854ad, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4219504137179772, guid: 5c6d758d37ba80347ba0f4683cb854ad, type: 3}
       propertyPath: m_RootOrder
       value: 513
@@ -94637,6 +94641,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   camera: {fileID: 1211285746}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!137 &7170284278221807828
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
