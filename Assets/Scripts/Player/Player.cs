@@ -10,19 +10,24 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera camera;
 
     [SerializeField] private LayerMask whatIsGround;
+
+    private bool isRun;
     
     private Rigidbody rigid;
     private Vector3 lookPos;
+    private Animator anim;
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
         SpeedControl();
         DirectionUpdate();
+        AnimationUpdate();
     }
 
     private void FixedUpdate()
@@ -37,8 +42,16 @@ public class Player : MonoBehaviour
 
         Vector3 movePos = new Vector3(horizontal, 0, vertical);
 
+        if (movePos != Vector3.zero)
+        {
+            isRun = true;
+        }
+        else
+        {
+            isRun = false;
+        }
+
         rigid.AddForce(movePos.normalized * moveSpeed * 10, ForceMode.Force);
-        
     }
     
     private void SpeedControl()
@@ -69,5 +82,10 @@ public class Player : MonoBehaviour
         lookDir.y = 0;
         
         transform.LookAt(transform.position + lookDir, Vector3.up);
+    }
+    
+    private void AnimationUpdate()
+    {
+        anim.SetBool("isRun", isRun);
     }
 }
