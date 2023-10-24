@@ -6,8 +6,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+
+    [SerializeField] private Camera camera;
     
     private Rigidbody rigid;
+    private Vector3 lookPos;
 
     private void Start()
     {
@@ -17,6 +20,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         SpeedControl();
+        DirectionUpdate();
     }
 
     private void FixedUpdate()
@@ -45,5 +49,23 @@ public class Player : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rigid.velocity = new Vector3(limitedVel.x, rigid.velocity.y, limitedVel.z);
         }
+    }
+
+    private void DirectionUpdate()
+    {
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            lookPos = hit.point;
+        }
+
+        Vector3 lookDir = lookPos - transform.position;
+
+        lookDir.y = 0;
+        
+        transform.LookAt(transform.position + lookDir, Vector3.up);
     }
 }
