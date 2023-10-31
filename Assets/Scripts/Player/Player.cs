@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private LayerMask whatIsGround;
 
+     private float horizontal;
+     private float vertical;
+
     private bool isRun;
     
     private Rigidbody rigid;
@@ -37,8 +40,8 @@ public class Player : MonoBehaviour
 
     private void MoveUpdate()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 movePos = new Vector3(horizontal, 0, vertical);
 
@@ -87,5 +90,7 @@ public class Player : MonoBehaviour
     private void AnimationUpdate()
     {
         anim.SetBool("isRun", isRun);
+        anim.SetFloat("X", horizontal);
+        anim.SetFloat("Y", vertical);
     }
 }
