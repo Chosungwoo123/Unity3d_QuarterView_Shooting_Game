@@ -43,9 +43,11 @@ public class Player : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
+        //Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
+        
+        Vector3 movePos = new Vector3(horizontal, 0, vertical);
 
-        if (moveDirection != Vector3.zero)
+        if (movePos != Vector3.zero)
         {
             isRun = true;
         }
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
             isRun = false;
         }
 
-        rigid.AddForce(moveDirection.normalized * moveSpeed * 10, ForceMode.Force);
+        rigid.AddForce(movePos.normalized * moveSpeed * 10, ForceMode.Force);
     }
     
     private void SpeedControl()
